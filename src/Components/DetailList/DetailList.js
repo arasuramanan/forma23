@@ -296,8 +296,17 @@ function DetailsList() {
 </div>
 <div className="row" style={{ marginTop: '20px' }}></div>
 
+      
+      {/* Logout Button */}
+      <div className="row">
+        <div className="col-md-6">
+          <button type="button" onClick={handleLogout} className="button logout-button">
+            Logout
+          </button>
+        </div>
+      </div>
 
-
+      <div className="row" style={{ marginTop: '20px' }}></div>
 </form>
   
     );
