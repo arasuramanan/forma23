@@ -1,6 +1,6 @@
-import React, { useState } from "react"
-import axios from "axios"
-import { useNavigate, Link } from "react-router-dom"
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
 
 
 function Login() {
@@ -15,7 +15,7 @@ function Login() {
 
         try{
 
-            await axios.post("http://localhost:5000/",{
+            await axios.post(`${process.env.REACT_APP_URL}/login`,{
                 email,password
             })
             .then(res=>{

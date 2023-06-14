@@ -32,7 +32,7 @@ function DetailsList() {
     onSubmit: async (values) => {
       console.log('hi');
       console.log(values);
-      const result = await axios.post('http://localhost:5000/api/detailsnewform', values);
+      const result = await axios.post('https://backend-oz2e.onrender.com/api/detailsnewform', values);
       console.log(result);
       window.alert('🎉✨ Form Submitted Successfully! 🎉✨');
       window.location.reload();
@@ -42,7 +42,7 @@ function DetailsList() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/details');
+        const response = await axios.get(`${process.env.REACT_APP_URL}/api/details`);
         setJsonData(response.data);
       } catch (error) {
         console.error('Error fetching JSON data:', error);
