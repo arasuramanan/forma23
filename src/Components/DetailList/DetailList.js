@@ -9,7 +9,10 @@ import ExcelJS from 'exceljs';
 
 
 
+
+
 function DetailsList() {
+  const [timeValue, setTimeValue] = useState('');
   const navigate = useNavigate();
   const [jsonData, setJsonData] = useState(null);
 
@@ -18,20 +21,23 @@ function DetailsList() {
       NameoftheUPSI: '',
       InfoSharedBy: '',
       PANNumber1: '',
-      InfoSharedwithrespectto: '',
-      InsiderTypes: '',
-      InfoSharedTo: '',
+      InformationSharedInCapacity1: '',
+      Designation1: '',
       PANNumber2: '',
+      InformationSharedInCapacity2: '',
+      Designation2: '',
       TypeofOrganization: '',
       NameoftheOrganization: '',
-      DateandTimeofSharing: '',
+      DateofSharing: '',
       ParticularofInfoShared: '',
       PurposeofSharing: '',
       ModeofSharing: '',
+      TimeofSharing: '',
     },
     onSubmit: async (values) => {
       console.log('hi');
       console.log(values);
+      values.TimeofSharing = timeValue;
       const result = await axios.post('https://backend-oz2e.onrender.com/api/detailsnewform', values);
       console.log(result);
       window.alert('🎉✨ Form Submitted Successfully! 🎉✨');
@@ -144,7 +150,7 @@ function DetailsList() {
     
     <div className="row">
       <div className="col-md-6">
-        <label htmlFor="text" className="form-label">Info Shared with respect to:</label>
+        <label htmlFor="text" className="form-label">Information Shared In Capacity 1:</label>
       </div>
       
       <div className="col-md-6">
@@ -159,7 +165,7 @@ function DetailsList() {
 
     <div className="row" style={{ marginTop: '15px' }}>
       <div className="col-md-6">
-        <label htmlFor="text" className="form-label">Insider Types:</label>
+        <label htmlFor="text" className="form-label">Designation 1:</label>
       </div>
       <div className="col-md-6">
         <select className="form-select" onChange={formik.handleChange} name="InsiderTypes" aria-label=".form-select-lg example">
@@ -210,6 +216,43 @@ function DetailsList() {
         <input type="text" onChange={formik.handleChange} name="PANNumber2" className="form-control" />
       </div>
     </div>
+
+    <div className="row">
+      <div className="col-md-6">
+        <label htmlFor="text" className="form-label">Information Shared In Capacity 2:</label>
+      </div>
+      
+      <div className="col-md-6">
+        <select className="form-select" onChange={formik.handleChange} name="InfoSharedwithrespectto" aria-label=".form-select-lg example">
+          <option defaultValue="None">--- Select ---</option>
+          <option value="Designated Person">Designated Person</option>
+          <option value="Insider">Insider</option>
+          <option value="UPSI Project">UPSI Project</option>
+        </select>
+      </div>
+    </div>
+
+    <div className="row" style={{ marginTop: '15px' }}>
+      <div className="col-md-6">
+        <label htmlFor="text" className="form-label">Designation 2:</label>
+      </div>
+      <div className="col-md-6">
+        <select className="form-select" onChange={formik.handleChange} name="InsiderTypes" aria-label=".form-select-lg example">
+          <option defaultValue="None">--- Select ---</option>
+          <option value="Director">Director</option>
+          <option value="Managing Director">Managing Director</option>
+          <option value="Independent Director">Independent Director</option>
+          <option value="CFO">CFO</option>
+          <option value="Company Secretary">Company Secretary</option>
+          <option value="Auditor">Auditor</option>
+          <option value="Company Secretary - In Practice">Company Secretary - In Practice</option>
+          <option value="Others">Others</option>
+          
+        </select>
+      </div>
+    </div>
+
+
     <div className="row">
       <div className="col-md-6">
         <label htmlFor="text" className="form-label">Type of Organization:</label>
@@ -233,10 +276,10 @@ function DetailsList() {
     </div>
     <div className="row">
       <div className="col-md-6">
-        <label htmlFor="text" className="form-label">Date and Time of Sharing:</label>
+        <label htmlFor="text" className="form-label">Date of Sharing:</label>
       </div>
       <div className="col-md-6">
-        <input type="date" id="date" onChange={formik.handleChange} name="DateandTimeofSharing" className="form-control" />
+        <input type="date" id="date" onChange={formik.handleChange} name="DateofSharing" className="form-control" />
       </div>
     </div>
     <div className="row" style={{ marginTop: '15px' }}>
@@ -268,6 +311,24 @@ function DetailsList() {
         </select>
       </div>
     </div>
+
+
+    <div className="row">
+  <div className="col-md-6">
+    <label htmlFor="time" className="form-label">Time of Sharing:</label>
+  </div>
+  <div className="col-md-6">
+    <input
+      type="time"
+      value={timeValue}
+      onChange={(e) => setTimeValue(e.target.value)}
+      name="TimeofSharing"
+      className="form-control"
+    />
+  </div>
+</div>
+
+
     <div className="row">
       <div className="col-md-6">
         <button type="submit">SUBMIT</button>
