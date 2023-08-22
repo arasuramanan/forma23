@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-image: url('../images/new.jpg');
+  /* background-image: url('../images/new.jpg'); */
 }
 
 .login-container-wrapper::before {
