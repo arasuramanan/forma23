@@ -35,6 +35,7 @@ function Login() {
   }
 
   return (
+    <div className="login-container-wrapper">
     <div className="login-container">
       <h1>Signup</h1>
 
@@ -59,6 +60,7 @@ function Login() {
       </div>
 
       <Link to="/">Login Page</Link>
+    </div>
     </div>
   );
 }
